@@ -58,7 +58,7 @@ namespace UserMaintenance
                         
                     }
                    
-                    //devben elfelejtettem kitörölni a dobozt meg a labelt
+                    
                 }
 
 
