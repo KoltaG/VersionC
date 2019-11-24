@@ -22,6 +22,7 @@ namespace UserMaintenance
 
             button1.Text = Resource1.Add; // button1
             button2.Text = Resource1.Write;
+            button3.Text = Resource1.Delete;
 
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
@@ -47,7 +48,7 @@ namespace UserMaintenance
             sfd.ShowDialog();
             if (sfd.FileName != "")
             {
-                var emberek = (from x in users select x).ToList();
+                //var emberek = (from x in users select x).ToList();
 
                 using (StreamWriter sw = new StreamWriter(sfd.FileName, true, Encoding.UTF8))
                 {
@@ -65,5 +66,12 @@ namespace UserMaintenance
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string kivid = Convert.ToString(listBox1.SelectedValue);
+            var kiv = from x in users  where x.ID.ToString() ==kivid select x;
+            users.Remove(kiv.FirstOrDefault());
+
+        }
     }
 }
